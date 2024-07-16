@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material3.Checkbox
@@ -53,11 +54,16 @@ fun ShoppingListItem(
             modifier = Modifier
                 .fillMaxHeight()
                 .padding(start = 8.dp)
+                .weight(1f)
         ) {
             Text(text = item.name, fontWeight = FontWeight.Medium)
             Text(
                 text = "${item.quantity} item${if (item.quantity.toInt() > 1) "s" else ""}",
             )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Icon(imageVector = Icons.Outlined.LocationOn, contentDescription = "location icon")
+                Text(text = item.address, modifier = Modifier.fillMaxWidth())
+            }
         }
 
         Spacer(modifier = Modifier.weight(1F))
